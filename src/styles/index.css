@@ -1,0 +1,12 @@
+body {
+  font-size: 16px;
+}
+
+.fromThree_dropdown{
+  border: 1px solid #ced4da;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem
+}
+.card_head{
+  width: 18rem;
+}
