@@ -16,6 +16,7 @@ const FormThree = ({
   const onSelect = eventKey => {
     console.log(eventKey);
   };
+
   return (
     <Formik
       initialValues={{ countryCode, phoneNumber, acceptTermsAndCondition }}
@@ -32,14 +33,12 @@ const FormThree = ({
         ),
       })}
       onSubmit={({ countryCode, phoneNumber, acceptTermsAndCondition }) => {
-        setFormThree(formThree => {
-          return {
-            ...formThree,
-            countryCode,
-            phoneNumber,
-            acceptTermsAndCondition,
-          };
-        });
+        setFormThree(formThree => ({
+          ...formThree,
+          countryCode,
+          phoneNumber,
+          acceptTermsAndCondition,
+        }));
         handleSubmit();
       }}
     >
@@ -86,14 +85,12 @@ const FormThree = ({
             variant="primary"
             className="mx-2"
             onClick={() =>
-              setFormThree(formThree => {
-                return {
-                  ...formThree,
-                  countryCode: props.values.countryCode,
-                  phoneNumber: props.values.phoneNumber,
-                  acceptTermsAndCondition: props.values.acceptTermsAndCondition,
-                };
-              })
+              setFormThree(formThree => ({
+                ...formThree,
+                countryCode: props.values.countryCode,
+                phoneNumber: props.values.phoneNumber,
+                acceptTermsAndCondition: props.values.acceptTermsAndCondition,
+              }))
             }
           >
             Save
@@ -101,14 +98,12 @@ const FormThree = ({
           <Button
             variant="primary"
             onClick={() =>
-              setFormThree(formThree => {
-                return {
-                  ...formThree,
-                  countryCode: props.values.countryCode,
-                  phoneNumber: props.values.phoneNumber,
-                  acceptTermsAndCondition: props.values.acceptTermsAndCondition,
-                };
-              })
+              setFormThree(formThree => ({
+                ...formThree,
+                countryCode: props.values.countryCode,
+                phoneNumber: props.values.phoneNumber,
+                acceptTermsAndCondition: props.values.acceptTermsAndCondition,
+              }))
             }
             className="mx-2"
             type="submit"

@@ -41,7 +41,7 @@ const Home = () => {
         if (res.status == 200) navigate('/posts');
       })
       .catch(err => {
-        alert("Something went wrong")
+        alert('Something went wrong');
         console.log(err);
       });
   };
