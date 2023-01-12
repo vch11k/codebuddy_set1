@@ -3,9 +3,13 @@ import * as Yup from 'yup';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 
-const FormTwo = ({ formTwo: { firstName, lastName, address }, setFormTwo, setCurrentStep }) => (
+const FormTwo = ({ formTwo, setFormTwo, setCurrentStep }) => (
   <Formik
-    initialValues={{ firstName, lastName, address }}
+    initialValues={{
+      firstName: formTwo.firstName,
+      lastName: formTwo.lastName,
+      address: formTwo.address,
+    }}
     validationSchema={Yup.object({
       firstName: Yup.string()
         .min(2, 'Too Short!')
@@ -16,7 +20,7 @@ const FormTwo = ({ formTwo: { firstName, lastName, address }, setFormTwo, setCur
       address: Yup.string().min(10, 'Too Short!'),
     })}
     onSubmit={({ firstName, lastName, address }) => {
-      setFormTwo(formTwo => ({ ...formTwo, firstName, lastName, address }));
+      setFormTwo(prevProps => ({ ...prevProps, firstName, lastName, address }));
       setCurrentStep(prevStep => prevStep + 1);
     }}
   >
@@ -49,8 +53,8 @@ const FormTwo = ({ formTwo: { firstName, lastName, address }, setFormTwo, setCur
           variant="primary"
           className="mx-2"
           onClick={() =>
-            setFormTwo(formTwo => ({
-              ...formTwo,
+            setFormTwo(preveProps => ({
+              ...preveProps,
               firstName: props.values.firstName,
               lastName: props.values.lastName,
               address: props.values.address,

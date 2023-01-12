@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import { useNavigate } from 'react-router-dom';
+import { Stepper } from 'react-form-stepper';
 import FormOne from '../components/FormOne';
 import FormThree from '../components/FormThree';
 import FormTwo from '../components/FormTwo';
 import './Home.css';
-import { Stepper } from 'react-form-stepper';
 
 const Home = () => {
   const [formOne, setFormOne] = useState({ email: '', password: '' });
@@ -24,7 +24,6 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    console.log(formThree);
     fetch('https://codebuddy.review/submit', {
       method: 'POST',
       body: JSON.stringify({
@@ -38,12 +37,9 @@ const Home = () => {
       }),
     })
       .then(res => {
-        if (res.status == 200) navigate('/posts');
+        if (res.status === 200) navigate('/posts');
       })
-      .catch(err => {
-        alert('Something went wrong');
-        console.log(err);
-      });
+      .catch(() => {});
   };
 
   return (
@@ -55,13 +51,13 @@ const Home = () => {
         />
         <Row>
           <Col xs={6} className="mx-auto">
-            {currentStep == 0 && (
+            {currentStep === 0 && (
               <FormOne formOne={formOne} setFormOne={setFormOne} setCurrentStep={setCurrentStep} />
             )}
-            {currentStep == 1 && (
+            {currentStep === 1 && (
               <FormTwo formTwo={formTwo} setFormTwo={setFormTwo} setCurrentStep={setCurrentStep} />
             )}
-            {currentStep == 2 && (
+            {currentStep === 2 && (
               <FormThree
                 formThree={formThree}
                 setFormThree={setFormThree}
