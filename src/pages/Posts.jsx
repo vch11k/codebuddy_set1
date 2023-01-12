@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -10,7 +10,6 @@ const Posts = () => {
         setPosts(data?.data?.posts);
       });
   }, []);
-  console.log(posts);
   return (
     <Container>
       <Row>
